@@ -23,7 +23,7 @@ $3 \
 ## Client Script
 
 ```
-java 
+java \
 -Dorg.elasql.config.file=elasql.properties \
 -Dorg.elasql.bench.config.file=elasqlbench.properties \
 -Dorg.vanilladb.comm.config.file=vanillacomm.properties \
