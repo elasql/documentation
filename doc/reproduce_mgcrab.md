@@ -79,6 +79,17 @@ Here we summary the hardware information that we used to run our experiments:
 - OS: CentOS 7 64-bit
 - Network Bandwidth: 1 Gbps
 
-### Tracing Code
+### Tracing the Code
 
-TODO
+First, we suggest you to check [this document](elasql-architecture.md) for an overview of the architecture of ElaSQL. Next, please follow the workflow shown in the document to understand how a transaction request is processed in the system.
+
+After you have a basic knowledge about the system, you can then start to trace the code in `org.elasql.migration`, which includes all the migration algorithms shown in the MgCrab paper. We suggest you to start form the following classes:
+
+- `org.elasql.migration.MigrationSystemController`
+  - The central controller that issues a data migration plan to all machines.
+  - Only the sequencer server has this controller.
+  - MgCrab extends this class because it has to trigger additional phases.
+- `org.elasql.migration.MigrationMgr`
+  - The manager that records migration progress and states on each server node.
+  - Each server node has its own MigrationMgr.
+  - Each migration algorithm also implements its own MigrationMgr.
