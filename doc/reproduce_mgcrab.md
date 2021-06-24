@@ -14,6 +14,10 @@ Once you have read [Getting Started Guide](getting_started.pdf), you should have
 
 However, due to the complexity of running large-scale experiments on a cluster, we suggest users to use our auto deployment and large-scale benchmarking tool, [Auto-Bencher](https://github.com/SLMT/auto-bencher), to reproduce experiments. Please check out [the README](https://github.com/SLMT/auto-bencher) to know how to use the tool to set up a testing environment.
 
+### JVM Settings
+
+In our experiments, we found that a small heap may cause frequent garbage collections. The recommended setting of the heap size for each database server is at least 5GB. That is, we recommend to add a VM argument `-XmxC` with `C` no less than 5GB. 
+
 ## Step 3: Getting Our Parameters
 
 We provide the parameters that we set for the MgCrab experiments in [this parameter folder](https://github.com/SLMT/auto-bencher/tree/master/parameters/mgcrab) in Auto Bencher repository. Each sub-folder in it represents an experiment set:
